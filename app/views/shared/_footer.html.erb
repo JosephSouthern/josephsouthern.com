@@ -1,0 +1,31 @@
+<div class="container_16">
+	<div class="grid_1">&nbsp;</div>
+	<div class="section footer grid_12">
+		<%= render :partial => 'shared/sectionTitle', :locals => {:sectionTitle => "links"}  %>
+		<br class="clear" />
+		<div class="article prefix_1 grid_11">
+			<div class="grid_4 alpha omega">
+				<h2>About</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum velit non enim mattis ut porta nibh pretium. Donec nec nisi nunc. Curabitur porta sollicitudin massa at malesuada. Morbi a sollicitudin urna. In risus ante, convallis sed porta ut, mollis.</p>
+			</div>
+			
+			<div class="prefix_1 grid_2">
+				<h2>Links</h2>
+				<ul class='footerMenu'>
+					<li><a href="home">nervous yak</a></li>
+					<li><a href="http://twitter.com/josephsouthern">twitter</a></li>
+				</ul>
+			</div>
+			
+			<div class="prefix_1 grid_2">
+				<h2>Menu</h2>
+				
+				<%= render :partial => 'shared/menuItems', :locals => {:menuClass => 'footerMenu'} %>
+				
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+

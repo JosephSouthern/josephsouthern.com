@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <title><%=h yield(:title) %>&#151;Joseph Southern</title>
+  	<!-- TYPEKIT -->
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+
+  <script type="text/javascript" src="http://use.typekit.com/ilg5ibf.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
+   <%= stylesheet_link_tag    "application" %>
+
+	<link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="/assets/css/small-device.css" />
+	
+  
+   <%= favicon_link_tag 'favicon.ico' %>
+</head>
+<body>
+
+	<%= render :partial => 'shared/header' %>
+
+	<%= render :partial => 'shared/section', :title => yield(:title) %>
+
+	<%= render :partial => 'shared/footer'%>
+</body>
+</html>

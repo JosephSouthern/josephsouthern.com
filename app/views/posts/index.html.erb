@@ -1,0 +1,32 @@
+<% content_for :title, "blog" %>
+
+<div class=" grid_10 alpha omega">
+
+	
+<% @posts.each do |post| %>
+	
+	<div class="postHeader"><i><%= link_to post.title, post %></i></div>
+    <br/>
+    <%=raw post.content %>
+	
+	<br/>
+	<div class="postFooter">
+		by <%= post.name %><br/>
+		<%= post.published.strftime("%b %d, %Y") %>
+	</div>
+	
+		
+
+	<!--
+    <%= link_to 'Show', post %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+	</div>-->
+	
+	<br class='clear'/>
+		<hr/><br/>
+<% end %>
+
+<%= link_to "Archive", :controller => "archive"%>
+</div>
+	

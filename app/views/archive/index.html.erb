@@ -1,0 +1,38 @@
+<% content_for :title, "archive" %>
+
+<div class=" grid_10 alpha omega">
+
+<% @Year="" %>
+<% @Month=""  %>
+	
+<% @posts.each do |post| %>
+	
+	
+	<% if (post.published.strftime("%Y") != @Year) %>
+		<div class="postFooter">
+		<%= post.published.strftime("%Y") %>
+		</div><br/>
+	<% end %>	
+	<% 	@Year = post.published.strftime("%Y") %>	
+	
+	
+
+	<% if (post.published.strftime("%b") != @Month) %>
+		<div class="postFooter">
+		<%= post.published.strftime("%b") %>
+		</div>	
+	<% end %>	
+	<% 	@Month = post.published.strftime("%b") %>	
+
+		
+		
+   
+	
+	<div class="">
+		<i><%= link_to post.title, post %></i>
+	    &nbsp; <%= post.published.strftime("%b %d, %Y")  %>
+	</div>
+	
+	<br/>
+<% end %>
+</div>

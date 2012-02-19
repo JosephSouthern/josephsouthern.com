@@ -1,0 +1,16 @@
+<div class="container_16">
+	<div class="grid_1">&nbsp;</div>
+	<div class="section grid_12">
+		
+		<%= render :partial => 'shared/sectionTitle', :locals => {:sectionTitle => yield(:title)} %>
+		
+		<br class="clear" />
+		<div class="article prefix_1 grid_10">
+			<%= yield %>
+		</div>
+		
+	</div>
+
+</div>
+
+<br class="clear"/>
