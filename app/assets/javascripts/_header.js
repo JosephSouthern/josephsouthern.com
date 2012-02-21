@@ -7,7 +7,7 @@ $(document).ready(function(){
 }); // close document.ready
 
 function showHeaderMenu(){  
-							var menu = $(".header_menu");
+							var menu = $(".header_menu_move");
 							menu.animate({"margin-top": "+=2em"}, 
 										  "slow",
 										   function(){
@@ -16,7 +16,7 @@ function showHeaderMenu(){
 					                    );
 };
 function hideHeaderMenu(){  
-	 					var menu = $(".header_menu");
+	 					var menu = $(".header_menu_move");
 						menu.css("z-index", -1);
 						menu.animate({"margin-top": "-2em"}, "slow");
 					};

@@ -3,5 +3,10 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree . 
 */
+@import "_01_reset.css.scss";
+@import "_02_960_16_col.css.scss";
+@import "_header.css.scss";
+@import "site.css.scss";
+
+

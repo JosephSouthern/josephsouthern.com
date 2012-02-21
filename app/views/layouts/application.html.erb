@@ -11,11 +11,12 @@
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 
-   <%= stylesheet_link_tag    "application" %>
+   <%= stylesheet_link_tag "application"%>	
+   <%= stylesheet_link_tag "mobile" if mobile_device? %>
+   <%= stylesheet_link_tag params[:controller] %>
+   
 
-	<link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="/assets/css/small-device.css" />
-	
-  
+	  
    <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>

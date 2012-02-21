@@ -6,7 +6,12 @@
 		<span class="header_name">
 			joseph southern
 		</span>
-		<%= render :partial => 'shared/menuItems', :locals => {:menuClass => 'header_menu'} %>
+		<% if mobile_device? %>
+			<%= render :partial => 'shared/menuItems', :locals => {:menuClass => 'header_menu'} %>
+		<% else %>
+			<%= render :partial => 'shared/menuItems', :locals => {:menuClass => 'header_menu header_menu_move'} %>
+		<% end %>
+		
 	</div>
 
 	

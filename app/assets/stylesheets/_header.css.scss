@@ -1,0 +1,28 @@
+.header_menu{
+	
+	font-family: 		futura-pt,sans-serif;
+	font-style: 		normal;
+	font-weight: 		400;
+	font-size:			1.5em;
+	list-style-type: 	none;
+	position:			relative;
+	z-index:			-1;
+	margin-top:			-2em;
+	
+}
+.header ul li{
+			display:inline;
+}
+
+.header ul li a:visited, 
+.header ul li a:link, 
+.header ul li a,
+.header ul li a:hover{
+	font-family: 		futura-pt,sans-serif;
+	font-style: 		normal;
+	color:				#D13E32;
+	text-decoration:	none;
+}
+.header ul li a:hover{
+	text-decoration:	underline;	
+}
