@@ -11,7 +11,7 @@ gem 'pg'
 gem 'json'
 
 gem 'feedzirra'				#Load rss feed
-gem 'friendly_id'			#Pretty urls
+gem "friendly_id", "~> 4.0.1"
 
 # Gems used only for assets and not required
 # in production environments by default.
