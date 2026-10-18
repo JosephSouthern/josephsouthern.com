@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mid-Century Tiki Lounge & Cocktail Architect | Joseph Southern</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts matching Joseph Southern Portfolio -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Shrikhand&family=Special+Elite&family=Syne:wght@700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'retro-bg': 'var(--bg-color)',
+                        'retro-card': 'var(--card-bg)',
+                        'retro-mustard': 'var(--mustard)',
+                        'retro-orange': 'var(--orange)',
+                        'retro-brown': 'var(--brown)',
+                        'retro-cream': '#FDF8EC',
+                        'retro-avocado': 'var(--avocado)',
+                        'retro-dark': 'var(--dark-brown)',
+                        'retro-accent': 'var(--accent)',
+                        'tiki-bamboo': 'var(--tiki-bamboo)',
+                        'tiki-torch': 'var(--tiki-torch)',
+                        'tiki-ocean': 'var(--tiki-ocean)'
+                    },
+                    fontFamily: {
+                        'groovy': ['Shrikhand', 'cursive'],
+                        'serif-warm': ['"DM Serif Display"', 'serif'],
+                        'typewriter': ['"Special Elite"', '"Courier Prime"', 'monospace'],
+                        'mono-retro': ['"Chivo Mono"', 'monospace'],
+                        'display': ['Syne', 'sans-serif']
+                    },
+                    boxShadow: {
+                        '70s': '5px 5px 0px var(--dark-brown)',
+                        '70s-lg': '9px 9px 0px var(--dark-brown)',
+                        '70s-glow': '0 0 25px rgba(234, 161, 50, 0.45)',
+                        'torch-glow': '0 0 20px rgba(217, 83, 47, 0.6)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Theme 1: Daylight Lanai Sunset (Default) */
+            --bg-color: #f6efe0;
+            --card-bg: #fffbf2;
+            --mustard: #EAA132;
+            --orange: #D9532F;
+            --brown: #4A2810;
+            --avocado: #5A7744;
+            --dark-brown: #241306;
+            --accent: #E56B42;
+            --text-primary: #241306;
+            --marquee-bg: #1A0D05;
+            --tiki-bamboo: #C7A24C;
+            --tiki-torch: #FF6B35;
+            --tiki-ocean: #2B7A78;
+        }
+
+        .theme-midnight {
+            /* Theme 2: Midnight Tiki Speakeasy */
+            --bg-color: #17110B;
+            --card-bg: #231B12;
+            --mustard: #F4B843;
+            --orange: #FF5A36;
+            --brown: #0E0905;
+            --avocado: #3E8E7E;
+            --dark-brown: #080503;
+            --accent: #FF7043;
+            --text-primary: #F8F3E6;
+            --marquee-bg: #0A0604;
+            --tiki-bamboo: #D9A036;
+            --tiki-torch: #FF4500;
+            --tiki-ocean: #17A2B8;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.16;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            transition: opacity 0.3s ease;
+        }
+
+        .crt-scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.22) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 10;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+            opacity: 0.65;
+        }
+
+        .retro-btn {
+            transition: all 0.12s ease;
+        }
+        .retro-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0px var(--dark-brown) !important;
+        }
+
+        @keyframes torch-flicker {
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 6px #FF5722); }
+            50% { opacity: 0.85; transform: scale(0.97) translateY(1px); filter: drop-shadow(0 0 12px #FFC107); }
+        }
+        .torch-pulse {
+            animation: torch-flicker 2.2s infinite ease-in-out;
+        }
+
+        @keyframes soundwave-bar {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+        .sound-active .bar-1 { animation: soundwave-bar 0.9s infinite ease-in-out; }
+        .sound-active .bar-2 { animation: soundwave-bar 1.3s infinite ease-in-out 0.2s; }
+        .sound-active .bar-3 { animation: soundwave-bar 0.8s infinite ease-in-out 0.4s; }
+
+        /* Custom bamboo borders */
+        .bamboo-border {
+            border: 4px solid var(--dark-brown);
+            outline: 2px dashed var(--tiki-bamboo);
+            outline-offset: -6px;
+        }
+
+        /* Custom range sliders */
+        input[type="range"] {
+            accent-color: var(--orange);
+        }
+    </style>
+</head>
+<body class="min-h-screen font-typewriter antialiased selection:bg-retro-orange selection:text-white pb-24">
+
+    <!-- Film Grain Overlay -->
+    <div id="filmGrain" class="grain-overlay"></div>
+
+    <!-- Top Navigation / Ambient Audio Deck Bar -->
+    <nav class="sticky top-0 z-40 w-full bg-retro-dark text-retro-cream px-4 py-2.5 border-b-4 border-retro-mustard flex flex-wrap justify-between items-center text-xs md:text-sm font-mono-retro shadow-md">
+        <div class="flex items-center space-x-3 mb-1 sm:mb-0">
+            <a href="../index.html" class="flex items-center space-x-1.5 text-retro-mustard hover:text-retro-orange font-bold uppercase tracking-wider transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span class="hidden sm:inline">Joseph Southern Portfolio</span>
+                <span class="sm:hidden">Back</span>
+            </a>
+            <span class="text-retro-orange">|</span>
+            <span class="inline-flex items-center space-x-1 text-retro-cream">
+                <i class="fa-solid fa-martini-glass-citrus text-retro-orange"></i>
+                <span class="font-bold tracking-widest uppercase">TIKI LOUNGE LAB</span>
+            </span>
+        </div>
+
+        <div class="flex items-center space-x-3 sm:space-x-4">
+            <!-- Audio Engine Controls -->
+            <div id="audioDeck" class="flex items-center space-x-2 bg-retro-brown px-3 py-1 rounded-lg border border-retro-mustard">
+                <button id="audioToggleBtn" onclick="toggleAudioEngine()" class="flex items-center space-x-2 text-retro-cream hover:text-retro-mustard transition" title="Toggle Procedural Exotica Ambient Sound">
+                    <span id="soundIcon" class="relative inline-flex items-center justify-center w-5 h-5">
+                        <i class="fa-solid fa-record-vinyl text-retro-mustard"></i>
+                    </span>
+                    <span id="audioStatusText" class="font-bold text-[11px] uppercase tracking-wide">Sound: OFF</span>
+                </button>
+
+                <!-- Mini Animated Bars when Playing -->
+                <div id="soundBars" class="hidden sound-active flex items-end space-x-0.5 h-4 px-1">
+                    <span class="bar-1 w-1 bg-retro-orange rounded-full h-2"></span>
+                    <span class="bar-2 w-1 bg-retro-mustard rounded-full h-3"></span>
+                    <span class="bar-3 w-1 bg-retro-cream rounded-full h-1"></span>
+                </div>
+
+                <!-- Ambient Audio Mix Drawer Toggle -->
+                <button onclick="toggleAudioControls()" class="text-retro-cream/70 hover:text-retro-cream text-xs ml-1" title="Audio Mix Levels">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+            </div>
+
+            <span class="text-retro-orange">|</span>
+
+            <!-- Theme Switcher -->
+            <button onclick="toggleTheme()" class="hover:text-retro-mustard transition flex items-center space-x-1" title="Toggle Daylight Lanai / Midnight Speakeasy">
+                <i id="themeIcon" class="fa-solid fa-sun text-retro-mustard"></i>
+                <span class="hidden md:inline" id="themeLabel">Lanai</span>
+            </button>
+
+            <!-- Film Grain Toggle -->
+            <button onclick="toggleGrain()" class="hover:text-retro-mustard transition" title="Toggle Film Grain">
+                <i class="fa-solid fa-film"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Slide-Down Audio Synthesis Mixer Bar -->
+    <div id="audioMixerDrawer" class="hidden bg-retro-dark text-retro-cream px-4 py-3 border-b-2 border-retro-mustard/60 font-mono-retro text-xs transition-all duration-300">
+        <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="text-retro-mustard font-bold uppercase"><i class="fa-solid fa-wave-square mr-1"></i> Procedural Web Audio Synth:</span>
+                <span class="text-retro-cream/70 text-[11px]">100% Generated live via Web Audio API (Zero MP3s)</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-6">
+                <div class="flex items-center space-x-2">
+                    <span class="text-[11px] text-retro-cream/80"><i class="fa-solid fa-circle-notch text-retro-orange mr-1"></i>Vinyl Crackle:</span>
+                    <input type="range" id="volCrackle" min="0" max="100" value="35" oninput="updateAudioGains()" class="w-20 cursor-pointer">
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-[11px] text-retro-cream/80"><i class="fa-solid fa-water text-retro-avocado mr-1"></i>Surf Waves:</span>
+                    <input type="range" id="volWaves" min="0" max="100" value="50" oninput="updateAudioGains()" class="w-20 cursor-pointer">
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-[11px] text-retro-cream/80"><i class="fa-solid fa-bell text-retro-mustard mr-1"></i>Bamboo Chimes:</span>
+                    <input type="range" id="volChimes" min="0" max="100" value="40" oninput="updateAudioGains()" class="w-20 cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 pt-6 md:pt-10">
+
+        <!-- Marquee Hero Banner -->
+        <header class="relative mb-10 bg-[var(--marquee-bg)] p-6 md:p-10 rounded-2xl border-4 border-retro-mustard shadow-70s-lg text-center overflow-hidden crt-scanlines">
+            <div class="absolute inset-2 border-2 border-dashed border-retro-mustard/40 rounded-xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col items-center">
+                <!-- Top Badge -->
+                <div class="inline-flex items-center space-x-2 bg-retro-orange text-retro-cream px-4 py-1 rounded-full text-xs font-mono-retro font-bold uppercase tracking-widest border-2 border-retro-dark mb-4 shadow-70s">
+                    <i class="fa-solid fa-volcano torch-pulse text-retro-mustard"></i>
+                    <span>Mid-Century Polynesian Pop & Rums</span>
+                    <i class="fa-solid fa-volcano torch-pulse text-retro-mustard"></i>
+                </div>
+
+                <!-- Groovy Title -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-groovy text-retro-mustard tracking-wide uppercase drop-shadow-[0_4px_0_rgba(217,83,47,1)] mb-3">
+                    The Tiki Cocktail Architect
+                </h1>
+
+                <!-- Subtitle / Tagline -->
+                <p class="font-serif-warm italic text-lg sm:text-2xl text-retro-cream tracking-wide max-w-3xl mb-6">
+                    "Historical 1930s–1970s Exotic Libations, Dynamic Rum-Blend Calculators & Ambient Exotica Soundscapes."
+                </p>
+
+                <!-- Marquee Torch Bulbs -->
+                <div class="flex items-center space-x-3 text-retro-mustard text-xs md:text-sm font-mono-retro mb-6">
+                    <i class="fa-solid fa-fire torch-pulse text-retro-orange"></i>
+                    <span class="tracking-widest uppercase border-x border-retro-mustard px-4 text-retro-cream">TRADER VIC • DON THE BEACHCOMBER • AUTHENTIC SPECS</span>
+                    <i class="fa-solid fa-fire torch-pulse text-retro-orange"></i>
+                </div>
+
+                <!-- Quick Action Bar -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="toggleBarCartDrawer()" class="retro-btn bg-retro-mustard text-retro-dark font-bold font-mono-retro px-5 py-2.5 rounded-xl border-2 border-retro-dark shadow-70s hover:bg-retro-orange hover:text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <span>My Bar Cart Matcher (<span id="cartCountBadge">0</span> Selected)</span>
+                    </button>
+                    <button onclick="randomCocktail()" class="retro-btn bg-retro-orange text-retro-cream font-bold font-mono-retro px-5 py-2.5 rounded-xl border-2 border-retro-dark shadow-70s hover:bg-retro-mustard hover:text-retro-dark flex items-center space-x-2">
+                        <i class="fa-solid fa-dice"></i>
+                        <span>Surprise Me / Random Drink</span>
+                    </button>
+                    <button onclick="openCustomBlendModal()" class="retro-btn bg-retro-dark text-retro-cream font-bold font-mono-retro px-5 py-2.5 rounded-xl border-2 border-retro-mustard shadow-70s hover:bg-retro-mustard hover:text-retro-dark flex items-center space-x-2">
+                        <i class="fa-solid fa-flask-vial text-retro-mustard"></i>
+                        <span>Rum Blend Calculator</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- "My Bar Cart" Collapsible Inventory Panel -->
+        <section id="barCartSection" class="hidden mb-10 bg-retro-card p-6 md:p-8 rounded-2xl border-4 border-retro-dark shadow-70s relative transition-all">
+            <div class="flex flex-wrap justify-between items-center border-b-2 border-retro-orange pb-3 mb-5 gap-3">
+                <div>
+                    <h2 class="font-groovy text-2xl md:text-3xl text-retro-dark flex items-center gap-2">
+                        <i class="fa-solid fa-cart-flatbed text-retro-orange"></i>
+                        My Tiki Bar Cart Inventory
+                    </h2>
+                    <p class="font-typewriter text-xs text-retro-dark/80">Check off what bottles & ingredients you have on hand to see what you can shake immediately.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="selectAllInventory()" class="font-mono-retro text-xs bg-retro-mustard text-retro-dark px-3 py-1.5 rounded-lg border border-retro-dark font-bold hover:bg-retro-orange hover:text-white">
+                        Stock All
+                    </button>
+                    <button onclick="clearInventory()" class="font-mono-retro text-xs bg-retro-dark text-retro-cream px-3 py-1.5 rounded-lg border border-retro-mustard font-bold hover:bg-retro-orange">
+                        Clear All
+                    </button>
+                    <button onclick="toggleBarCartDrawer()" class="text-retro-dark hover:text-retro-orange text-lg ml-2" title="Close Bar Cart">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Inventory Checkbox Grids -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono-retro text-xs">
+                <!-- Spirits -->
+                <div class="bg-retro-cream p-4 rounded-xl border-2 border-retro-dark">
+                    <h3 class="font-bold text-retro-orange uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-wine-bottle"></i> Rums & Spirits
+                    </h3>
+                    <div id="spiritsCheckboxes" class="space-y-2"></div>
+                </div>
+
+                <!-- Syrups & Modifiers -->
+                <div class="bg-retro-cream p-4 rounded-xl border-2 border-retro-dark">
+                    <h3 class="font-bold text-retro-mustard uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-jar"></i> Syrups & Liqueurs
+                    </h3>
+                    <div id="syrupsCheckboxes" class="space-y-2"></div>
+                </div>
+
+                <!-- Fresh Juices & Produce -->
+                <div class="bg-retro-cream p-4 rounded-xl border-2 border-retro-dark">
+                    <h3 class="font-bold text-retro-avocado uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-lemon"></i> Juices & Produce
+                    </h3>
+                    <div id="produceCheckboxes" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <!-- Inventory Live Status Pill -->
+            <div class="mt-5 p-3 bg-retro-dark text-retro-cream rounded-xl border-2 border-retro-mustard flex flex-wrap justify-between items-center text-xs font-mono-retro">
+                <span id="cartStatusText">Ready to Shake: 0 Cocktails | 1 Ingredient Away: 0 Cocktails</span>
+                <button onclick="filterByReadyToShake()" class="text-retro-mustard underline font-bold hover:text-retro-orange">
+                    View "Ready to Shake" Drinks Only <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Search, Category & Filter Bar -->
+        <section class="mb-8 bg-retro-card p-4 md:p-6 rounded-2xl border-4 border-retro-dark shadow-70s">
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+                <!-- Search Input -->
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-retro-dark/60"></i>
+                    <input type="text" id="searchInput" oninput="renderCocktails()" placeholder="Search rum, drink name, origin..." 
+                           class="w-full pl-9 pr-4 py-2 bg-retro-cream text-retro-dark rounded-xl border-2 border-retro-dark font-mono-retro text-xs focus:outline-none focus:border-retro-orange">
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 justify-center w-full md:w-auto font-mono-retro text-xs">
+                    <button onclick="setCategoryFilter('all')" class="category-btn active retro-btn px-3 py-1.5 rounded-lg border-2 border-retro-dark font-bold bg-retro-orange text-retro-cream shadow" data-cat="all">
+                        All Libations
+                    </button>
+                    <button onclick="setCategoryFilter('Tiki Classic')" class="category-btn retro-btn px-3 py-1.5 rounded-lg border-2 border-retro-dark font-bold bg-retro-cream text-retro-dark shadow" data-cat="Tiki Classic">
+                        Classics (1930–50s)
+                    </button>
+                    <button onclick="setCategoryFilter('High Octane')" class="category-btn retro-btn px-3 py-1.5 rounded-lg border-2 border-retro-dark font-bold bg-retro-cream text-retro-dark shadow" data-cat="High Octane">
+                        High Octane
+                    </button>
+                    <button onclick="setCategoryFilter('Bittersweet')" class="category-btn retro-btn px-3 py-1.5 rounded-lg border-2 border-retro-dark font-bold bg-retro-cream text-retro-dark shadow" data-cat="Bittersweet">
+                        Bittersweet
+                    </button>
+                    <button onclick="setCategoryFilter('Spiced Classic')" class="category-btn retro-btn px-3 py-1.5 rounded-lg border-2 border-retro-dark font-bold bg-retro-cream text-retro-dark shadow" data-cat="Spiced Classic">
+                        Spiced
+                    </button>
+                    <button onclick="setCategoryFilter('bookmarked')" class="category-btn retro-btn px-3 py-1.5 rounded-lg border-2 border-retro-dark font-bold bg-retro-cream text-retro-dark shadow" data-cat="bookmarked">
+                        <i class="fa-solid fa-bookmark text-retro-orange mr-1"></i> Saved (<span id="savedCount">0</span>)
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cocktails Grid -->
+        <section id="cocktailGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <!-- Dynamically populated via JS -->
+        </section>
+
+        <!-- Exotica & Rum Philosophy Callout -->
+        <section class="mb-14 bg-retro-dark text-retro-cream p-6 md:p-10 rounded-2xl border-4 border-retro-mustard shadow-70s-lg relative overflow-hidden crt-scanlines">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="md:col-span-8">
+                    <span class="text-retro-mustard font-mono-retro text-xs font-bold uppercase tracking-widest block mb-2">
+                        HISTORICAL NOTES // TIKI MIXOLOGY PRINCIPLES
+                    </span>
+                    <h2 class="font-groovy text-3xl md:text-4xl text-retro-mustard mb-4">
+                        The Sacred Art of Rum Blending
+                    </h2>
+                    <p class="font-typewriter text-sm sm:text-base text-retro-cream/90 leading-relaxed mb-4">
+                        Don the Beachcomber and Trader Vic rarely poured just one rum into a glass. True vintage tiki libations achieve their hypnotic depth by colliding disparate rum families:
+                    </p>
+                    <ul class="font-mono-retro text-xs space-y-2 text-retro-mustard mb-4">
+                        <li><i class="fa-solid fa-compass text-retro-orange mr-2"></i><strong>High-Ester Jamaican Pot Still</strong>: Funk, ripe plantain, spice, and raw sugarcane punch.</li>
+                        <li><i class="fa-solid fa-compass text-retro-orange mr-2"></i><strong>French Rhum Agricole (Martinique)</strong>: Fresh-crushed cane juice, grassy vegetal terroir, and bone-dry clarity.</li>
+                        <li><i class="fa-solid fa-compass text-retro-orange mr-2"></i><strong>Demerara (Guyana Wooden Stills)</strong>: Smoked molasses, burnt sugar, leather, and deep naval heft.</li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 text-center">
+                    <div class="bg-retro-brown p-5 rounded-xl border-2 border-retro-mustard">
+                        <i class="fa-solid fa-drum text-5xl text-retro-orange mb-3"></i>
+                        <h3 class="font-groovy text-xl text-retro-mustard mb-1">Exotica Ambient Room</h3>
+                        <p class="font-mono-retro text-[11px] text-retro-cream/80 mb-4">Click below to activate procedural ocean surf, bamboo chimes & warm vinyl crackle.</p>
+                        <button onclick="toggleAudioEngine()" class="retro-btn w-full bg-retro-mustard text-retro-dark font-mono-retro text-xs font-bold py-2.5 rounded-lg border border-retro-dark shadow">
+                            <i class="fa-solid fa-play mr-1"></i> Start Ambient Sound
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-retro-card p-6 md:p-8 rounded-2xl border-4 border-retro-dark shadow-70s text-center relative font-mono-retro text-xs text-retro-dark">
+            <div class="flex flex-wrap justify-center items-center gap-4 mb-4">
+                <a href="../index.html" class="font-bold text-retro-orange hover:underline flex items-center gap-1.5">
+                    <i class="fa-solid fa-home"></i> Joseph Southern Home
+                </a>
+                <span>•</span>
+                <a href="https://github.com/JosephSouthern" target="_blank" rel="noopener noreferrer" class="hover:text-retro-orange flex items-center gap-1">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <span>•</span>
+                <a href="https://www.linkedin.com/in/josephsouthern" target="_blank" rel="noopener noreferrer" class="hover:text-retro-orange flex items-center gap-1">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <p class="text-retro-dark/70">
+                Crafted with 1970s Polynesian-Pop Craftsmanship • Stand-Alone Zero-Dependency HTML5 & Web Audio API
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Modal: Cocktail Detail & Rum Blend Customizer -->
+    <div id="recipeModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-retro-card max-w-2xl w-full p-6 md:p-8 rounded-2xl border-4 border-retro-dark shadow-70s-lg relative my-8 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeRecipeModal()" class="absolute top-4 right-4 bg-retro-orange text-retro-cream w-8 h-8 rounded-full font-bold border-2 border-retro-dark flex items-center justify-center shadow hover:bg-retro-mustard hover:text-retro-dark">
+                ✕
+            </button>
+            <div id="modalRecipeContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal: Stand-alone Custom Rum Blend Calculator -->
+    <div id="rumBlendModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-retro-card max-w-lg w-full p-6 md:p-8 rounded-2xl border-4 border-retro-dark shadow-70s-lg relative">
+            <button onclick="closeCustomBlendModal()" class="absolute top-4 right-4 bg-retro-orange text-retro-cream w-8 h-8 rounded-full font-bold border-2 border-retro-dark flex items-center justify-center shadow hover:bg-retro-mustard hover:text-retro-dark">
+                ✕
+            </button>
+            <h3 class="font-groovy text-2xl md:text-3xl text-retro-dark mb-1">Rum Ratio Architect</h3>
+            <p class="font-mono-retro text-xs text-retro-orange font-bold uppercase mb-4">Custom Dual-Rum Blend Ratiometer</p>
+            
+            <div class="space-y-4 font-mono-retro text-xs">
+                <div>
+                    <label class="block text-retro-dark font-bold mb-1">Target Total Rum Volume:</label>
+                    <select id="blendTotalOz" onchange="calcBlend()" class="w-full bg-retro-cream p-2 rounded-lg border-2 border-retro-dark">
+                        <option value="2.0">2.0 oz (Standard Mai Tai / Highball)</option>
+                        <option value="2.5">2.5 oz (Navy Grog / Strong Libation)</option>
+                        <option value="3.5">3.5 oz (Zombie / Multi-Rum Punch)</option>
+                        <option value="8.0">8.0 oz (Scorpion Punch Bowl for 4)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <div class="flex justify-between font-bold text-retro-dark mb-1">
+                        <span>Rum A: Jamaican Pot-Still Funk</span>
+                        <span id="rumAPct">50%</span>
+                    </div>
+                    <input type="range" id="blendSlider" min="0" max="100" value="50" oninput="calcBlend()" class="w-full cursor-pointer">
+                    <div class="flex justify-between text-[11px] text-retro-dark/70 mt-1">
+                        <span>0% (All Agricole/Demerara)</span>
+                        <span>100% (Pure Heavy Funk)</span>
+                    </div>
+                </div>
+
+                <div class="bg-retro-cream p-4 rounded-xl border-2 border-retro-dark space-y-2">
+                    <div class="flex justify-between border-b border-retro-dark/20 pb-1">
+                        <span class="font-bold text-retro-orange">Rum A (Jamaican Pot-Still):</span>
+                        <span id="rumAAmount" class="font-bold">1.0 oz</span>
+                    </div>
+                    <div class="flex justify-between border-b border-retro-dark/20 pb-1">
+                        <span class="font-bold text-retro-avocado">Rum B (Martinique Agricole / Demerara):</span>
+                        <span id="rumBAmount" class="font-bold">1.0 oz</span>
+                    </div>
+                    <div class="flex justify-between pt-1">
+                        <span class="font-bold text-retro-dark">Flavor Profile Result:</span>
+                        <span id="blendDescriptor" class="font-bold text-retro-mustard">Balanced Aristocrat</span>
+                    </div>
+                </div>
+
+                <button onclick="closeCustomBlendModal()" class="retro-btn w-full bg-retro-mustard text-retro-dark font-bold py-2.5 rounded-lg border-2 border-retro-dark shadow-70s hover:bg-retro-orange hover:text-white">
+                    Apply Blend To Shaker
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        /* ==========================================================
+           1. Curated Tiki Cocktails Dataset
+           ========================================================== */
+        const COCKTAILS = [
+            {
+                id: "mai-tai-1944",
+                name: "1944 Trader Vic Mai Tai",
+                era: "1944 (Oakland, CA)",
+                category: "Tiki Classic",
+                origin: "Trader Vic (Victor Bergeron)",
+                glassware: "Double Old Fashioned / Tiki Mug",
+                ice: "Crushed Pebble Ice",
+                image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "Jamaican Pot-Still Rum", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "Rhum Agricole (Martinique)", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "Fresh Lime Juice", amount: 0.75, unit: "oz", type: "produce" },
+                    { name: "Orange Curaçao", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Orgeat (Almond Syrup)", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Rich Simple Syrup", amount: 0.25, unit: "oz", type: "syrup" }
+                ],
+                garnish: "Spent lime shell half (an island) and fresh mint bouquet (palm trees)",
+                profile: { tart: 8, sweet: 5, potency: 8, funk: 7 },
+                notes: "The definitive Tiki crown jewel. When Bergeron served this to friends from Tahiti in 1944, Carrie Guild tasted it and exclaimed: 'Mai tai-roa ae!' ('Out of this world - the best!'). Never add pineapple or neon grenadine."
+            },
+            {
+                id: "zombie-1934",
+                name: "Don's Original Zombie",
+                era: "1934 (Hollywood, CA)",
+                category: "High Octane",
+                origin: "Don the Beachcomber (Donn Beach)",
+                glassware: "Tall Chimney / Zombie Glass",
+                ice: "Crushed Ice",
+                image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "Jamaican Dark Rum", amount: 1.5, unit: "oz", type: "spirit" },
+                    { name: "Gold Puerto Rican Rum", amount: 1.5, unit: "oz", type: "spirit" },
+                    { name: "151-Proof Demerara Rum", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "Fresh Lime Juice", amount: 0.75, unit: "oz", type: "produce" },
+                    { name: "Don's Mix (Grapefruit & Cinnamon)", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Falernum", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Grenadine", amount: 0.25, unit: "oz", type: "syrup" },
+                    { name: "Angostura Bitters", amount: 1, unit: "dash", type: "syrup" },
+                    { name: "Absinthe / Pernod", amount: 6, unit: "drops", type: "spirit" }
+                ],
+                garnish: "Fresh mint sprig dusted with powdered sugar",
+                profile: { tart: 8, sweet: 6, potency: 10, funk: 9 },
+                notes: "Donn Beach famously enforced a strict 'Limit 2 Per Customer' rule because 'it makes you like the walking dead.' A lethal and intoxicatingly complex symphony of three rums, spice, and aromatic absinthe."
+            },
+            {
+                id: "jungle-bird",
+                name: "Jungle Bird",
+                era: "1973 (Kuala Lumpur, Malaysia)",
+                category: "Bittersweet",
+                origin: "Kuala Lumpur Hilton Aviary Bar",
+                glassware: "Tiki Mug or Double Rocks",
+                ice: "Cracked or Cubed Ice",
+                image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "Blackstrap / Dark Rum", amount: 1.5, unit: "oz", type: "spirit" },
+                    { name: "Campari", amount: 0.75, unit: "oz", type: "syrup" },
+                    { name: "Fresh Pineapple Juice", amount: 1.5, unit: "oz", type: "produce" },
+                    { name: "Fresh Lime Juice", amount: 0.5, unit: "oz", type: "produce" },
+                    { name: "Demerara Syrup", amount: 0.5, unit: "oz", type: "syrup" }
+                ],
+                garnish: "Pineapple fronds and an orange or lime wheel pinned with a cherry",
+                profile: { tart: 6, sweet: 6, potency: 6, bitterness: 8 },
+                notes: "One of the few great drinks to emerge from the 1970s. The bitter Italian amaro Campari cuts through the dense rich molasses of blackstrap rum and frothy tropical pineapple juice with genius balance."
+            },
+            {
+                id: "three-dots-and-a-dash",
+                name: "Three Dots and a Dash",
+                era: "Circa 1943 (WWII Era)",
+                category: "Spiced Classic",
+                origin: "Don the Beachcomber",
+                glassware: "Footed Pilsner or Zombie Glass",
+                ice: "Crushed Ice",
+                image: "https://images.unsplash.com/photo-1560512823-829485b8bf24?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "Rhum Agricole (Martinique)", amount: 1.5, unit: "oz", type: "spirit" },
+                    { name: "Jamaican Dark Rum", amount: 0.5, unit: "oz", type: "spirit" },
+                    { name: "Fresh Lime Juice", amount: 0.5, unit: "oz", type: "produce" },
+                    { name: "Fresh Orange Juice", amount: 0.5, unit: "oz", type: "produce" },
+                    { name: "Honey Syrup (1:1)", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Falernum", amount: 0.25, unit: "oz", type: "syrup" },
+                    { name: "Allspice Dram (Pimento)", amount: 0.25, unit: "oz", type: "syrup" },
+                    { name: "Angostura Bitters", amount: 1, unit: "dash", type: "syrup" }
+                ],
+                garnish: "Three brandied cherries skewered on a cocktail pick above a pineapple chunk (Morse code: • • • — for Victory)",
+                profile: { tart: 7, sweet: 6, potency: 7, spice: 9 },
+                notes: "Named after the Morse code signal for the letter 'V' for Victory during World War II. The pimento dram and velvety falernum infuse the rhum agricole with rich clove and allspice notes."
+            },
+            {
+                id: "navy-grog",
+                name: "Navy Grog",
+                era: "1941 (Hollywood / Beverly Hills)",
+                category: "High Octane",
+                origin: "Don the Beachcomber / Trader Vic",
+                glassware: "Double Rocks Glass",
+                ice: "Solid Frozen Ice Cone with Straw Piercing Core",
+                image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "Gold Puerto Rican Rum", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "Jamaican Pot-Still Rum", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "Demerara Rum", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "Fresh Lime Juice", amount: 0.75, unit: "oz", type: "produce" },
+                    { name: "Fresh Grapefruit Juice", amount: 0.75, unit: "oz", type: "produce" },
+                    { name: "Honey Syrup (1:1)", amount: 0.75, unit: "oz", type: "syrup" },
+                    { name: "Club Soda", amount: 1.0, unit: "oz", type: "produce" }
+                ],
+                garnish: "A carved ice cone sitting inside the glass",
+                profile: { tart: 8, sweet: 5, potency: 9, funk: 7 },
+                notes: "Richard Nixon's favorite drink at the Trader Vic's inside the Beverly Hilton. A tart, dry, three-rum wallop softened slightly by crisp white grapefruit and honey."
+            },
+            {
+                id: "fog-cutter",
+                name: "Fog Cutter",
+                era: "Late 1940s",
+                category: "Tiki Classic",
+                origin: "Trader Vic",
+                glassware: "Tiki Mug or Highball",
+                ice: "Crushed Pebble Ice",
+                image: "https://images.unsplash.com/photo-1575444758702-4a6b9222336e?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "White / Gold Rum", amount: 2.0, unit: "oz", type: "spirit" },
+                    { name: "Cognac / Brandy", amount: 1.0, unit: "oz", type: "spirit" },
+                    { name: "London Dry Gin", amount: 0.5, unit: "oz", type: "spirit" },
+                    { name: "Fresh Lemon Juice", amount: 1.0, unit: "oz", type: "produce" },
+                    { name: "Fresh Orange Juice", amount: 2.0, unit: "oz", type: "produce" },
+                    { name: "Orgeat (Almond Syrup)", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Cream Sherry (Float)", amount: 0.5, unit: "oz", type: "syrup" }
+                ],
+                garnish: "Fresh mint sprig and float of Oloroso/Cream Sherry",
+                profile: { tart: 7, sweet: 6, potency: 9, complexity: 8 },
+                notes: "Trader Vic Bergeron wrote: 'Fog Cutter, hell! After two of these you won't even see the fog.' Uses a triple-distillate base of rum, cognac, and gin crowned with rich nutty sherry."
+            },
+            {
+                id: "saturn",
+                name: "The Saturn",
+                era: "1967 (IBA World Championship Winner)",
+                category: "Tiki Classic",
+                origin: "J. 'Popo' Galsini",
+                glassware: "Coupe Glass",
+                ice: "Blended with 1 cup crushed ice, then strained",
+                image: "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "London Dry Gin", amount: 1.25, unit: "oz", type: "spirit" },
+                    { name: "Fresh Lemon Juice", amount: 0.5, unit: "oz", type: "produce" },
+                    { name: "Passion Fruit Syrup", amount: 0.5, unit: "oz", type: "syrup" },
+                    { name: "Orgeat (Almond Syrup)", amount: 0.25, unit: "oz", type: "syrup" },
+                    { name: "Falernum", amount: 0.25, unit: "oz", type: "syrup" }
+                ],
+                garnish: "A circular lemon peel ring skewered around a maraschino cherry planet",
+                profile: { tart: 8, sweet: 7, potency: 6, floral: 8 },
+                notes: "A historic Tiki masterpiece created with Gin instead of rum. Won the prestigious International Bartenders Association world championship in 1967. Passion fruit and almond play beautifully with gin botanicals."
+            },
+            {
+                id: "painkiller",
+                name: "The Painkiller",
+                era: "1970s",
+                category: "Tiki Classic",
+                origin: "Soggy Dollar Bar (British Virgin Islands)",
+                glassware: "Highball or Tiki Mug",
+                ice: "Crushed Ice",
+                image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&q=80&w=700",
+                ingredients: [
+                    { name: "Dark / Navy Rum", amount: 2.0, unit: "oz", type: "spirit" },
+                    { name: "Fresh Pineapple Juice", amount: 4.0, unit: "oz", type: "produce" },
+                    { name: "Fresh Orange Juice", amount: 1.0, unit: "oz", type: "produce" },
+                    { name: "Cream of Coconut (Coco Lopez)", amount: 1.0, unit: "oz", type: "syrup" }
+                ],
+                garnish: "Generous freshly grated nutmeg on crushed ice surface",
+                profile: { tart: 4, sweet: 8, potency: 7, cream: 9 },
+                notes: "Conceived at the swim-up Soggy Dollar Bar in White Bay, Jost Van Dyke. The heavy dusting of fragrant nutmeg over creamy coconut and dark rum is pure tropical escapism."
+            }
+        ];
+
+        /* ==========================================================
+           2. Bar Cart Inventory Master Lists
+           ========================================================== */
+        const INVENTORY_SPIRITS = [
+            "Jamaican Pot-Still Rum", "Jamaican Dark Rum", "Rhum Agricole (Martinique)", 
+            "Gold Puerto Rican Rum", "Blackstrap / Dark Rum", "151-Proof Demerara Rum", 
+            "Demerara Rum", "White / Gold Rum", "London Dry Gin", "Cognac / Brandy"
+        ];
+
+        const INVENTORY_SYRUPS = [
+            "Orange Curaçao", "Orgeat (Almond Syrup)", "Falernum", "Rich Simple Syrup", 
+            "Don's Mix (Grapefruit & Cinnamon)", "Grenadine", "Campari", "Demerara Syrup", 
+            "Honey Syrup (1:1)", "Allspice Dram (Pimento)", "Passion Fruit Syrup", 
+            "Cream of Coconut (Coco Lopez)", "Cream Sherry (Float)", "Angostura Bitters"
+        ];
+
+        const INVENTORY_PRODUCE = [
+            "Fresh Lime Juice", "Fresh Lemon Juice", "Fresh Pineapple Juice", 
+            "Fresh Orange Juice", "Fresh Grapefruit Juice", "Club Soda"
+        ];
+
+        let userInventory = new Set(JSON.parse(localStorage.getItem('tiki_inventory') || '[]'));
+        let bookmarkedCocktails = new Set(JSON.parse(localStorage.getItem('tiki_bookmarks') || '[]'));
+        let currentCategory = 'all';
+        let readyOnlyFilter = false;
+
+        /* ==========================================================
+           3. Web Audio API Procedural Synthesizer Engine
+           ========================================================== */
+        class ExoticaSoundEngine {
+            constructor() {
+                this.ctx = null;
+                this.isRunning = false;
+                this.vinylGain = null;
+                this.wavesGain = null;
+                this.chimesGain = null;
+                this.masterGain = null;
+                this.chimeTimer = null;
+            }
+
+            init() {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                this.ctx = new AudioCtx();
+
+                this.masterGain = this.ctx.createGain();
+                this.masterGain.gain.setValueAtTime(0.5, this.ctx.currentTime);
+                this.masterGain.connect(this.ctx.destination);
+
+                // Vinyl Surface Generator
+                this.initVinyl();
+
+                // Surf Waves Generator
+                this.initWaves();
+
+                // Bamboo / Vibraphone Chimes Generator
+                this.initChimes();
+            }
+
+            initVinyl() {
+                // Generate a 4-second noise buffer with sparse random pops
+                const bufferSize = this.ctx.sampleRate * 4;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+
+                for (let i = 0; i < bufferSize; i++) {
+                    // Continuous low level rumble & hiss
+                    data[i] = (Math.random() * 2 - 1) * 0.015;
+                    // Sparse pops
+                    if (Math.random() < 0.00015) {
+                        data[i] += (Math.random() * 2 - 1) * 0.45;
+                    }
+                }
+
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+                noise.loop = true;
+
+                // Highpass filter for vintage surface noise
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'highpass';
+                filter.frequency.setValueAtTime(900, this.ctx.currentTime);
+
+                this.vinylGain = this.ctx.createGain();
+                this.vinylGain.gain.setValueAtTime(0.35, this.ctx.currentTime);
+
+                noise.connect(filter);
+                filter.connect(this.vinylGain);
+                this.vinylGain.connect(this.masterGain);
+                noise.start();
+            }
+
+            initWaves() {
+                // Pink noise for deep ocean surf
+                const bufferSize = this.ctx.sampleRate * 5;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    b0 = 0.99886 * b0 + white * 0.0555179;
+                    b1 = 0.99332 * b1 + white * 0.0750759;
+                    b2 = 0.96900 * b2 + white * 0.1538520;
+                    b3 = 0.86650 * b3 + white * 0.3104856;
+                    b4 = 0.55000 * b4 + white * 0.5329522;
+                    b5 = -0.7616 * b5 - white * 0.0168980;
+                    data[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
+                    b6 = white * 0.115926;
+                }
+
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+                noise.loop = true;
+
+                // Modulated resonant lowpass filter simulating swell wash
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(350, this.ctx.currentTime);
+                filter.Q.setValueAtTime(2.0, this.ctx.currentTime);
+
+                // LFO to drive wave wash rhythm (0.08 Hz = ~12 sec wave cycle)
+                const lfo = this.ctx.createOscillator();
+                lfo.frequency.setValueAtTime(0.08, this.ctx.currentTime);
+                const lfoGain = this.ctx.createGain();
+                lfoGain.gain.setValueAtTime(280, this.ctx.currentTime);
+                lfo.connect(lfoGain);
+                lfoGain.connect(filter.frequency);
+                lfo.start();
+
+                this.wavesGain = this.ctx.createGain();
+                this.wavesGain.gain.setValueAtTime(0.5, this.ctx.currentTime);
+
+                noise.connect(filter);
+                filter.connect(this.wavesGain);
+                this.wavesGain.connect(this.masterGain);
+                noise.start();
+            }
+
+            initChimes() {
+                this.chimesGain = this.ctx.createGain();
+                this.chimesGain.gain.setValueAtTime(0.4, this.ctx.currentTime);
+                this.chimesGain.connect(this.masterGain);
+
+                // Pentatonic chime notes (C5, D5, E5, G5, A5)
+                const notes = [523.25, 587.33, 659.25, 783.99, 880.00];
+
+                const scheduleNextChime = () => {
+                    if (!this.isRunning) return;
+                    const freq = notes[Math.floor(Math.random() * notes.length)];
+                    this.strikeChime(freq);
+                    const nextTime = 3000 + Math.random() * 5000;
+                    this.chimeTimer = setTimeout(scheduleNextChime, nextTime);
+                };
+
+                this.scheduleChimes = scheduleNextChime;
+            }
+
+            strikeChime(freq) {
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+                // Bamboo / Marimba decay envelope
+                gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 1.8);
+
+                osc.connect(gain);
+                gain.connect(this.chimesGain);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 1.8);
+            }
+
+            start() {
+                if (!this.ctx) this.init();
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+                this.isRunning = true;
+                this.masterGain.gain.setTargetAtTime(0.5, this.ctx.currentTime, 0.1);
+                this.scheduleChimes();
+            }
+
+            stop() {
+                if (this.ctx && this.masterGain) {
+                    this.masterGain.gain.setTargetAtTime(0, this.ctx.currentTime, 0.1);
+                }
+                this.isRunning = false;
+                clearTimeout(this.chimeTimer);
+            }
+
+            setLevels(crackleVal, wavesVal, chimesVal) {
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                if (this.vinylGain) this.vinylGain.gain.setTargetAtTime(crackleVal / 100, now, 0.05);
+                if (this.wavesGain) this.wavesGain.gain.setTargetAtTime(wavesVal / 100, now, 0.05);
+                if (this.chimesGain) this.chimesGain.gain.setTargetAtTime(chimesVal / 100, now, 0.05);
+            }
+        }
+
+        const audioSynth = new ExoticaSoundEngine();
+
+        function toggleAudioEngine() {
+            const statusText = document.getElementById('audioStatusText');
+            const soundBars = document.getElementById('soundBars');
+            const soundIcon = document.getElementById('soundIcon');
+
+            if (!audioSynth.isRunning) {
+                audioSynth.start();
+                statusText.innerText = "Sound: ON";
+                statusText.classList.add("text-retro-mustard");
+                soundBars.classList.remove("hidden");
+                soundIcon.innerHTML = `<i class="fa-solid fa-compact-disc text-retro-orange animate-spin"></i>`;
+            } else {
+                audioSynth.stop();
+                statusText.innerText = "Sound: OFF";
+                statusText.classList.remove("text-retro-mustard");
+                soundBars.classList.add("hidden");
+                soundIcon.innerHTML = `<i class="fa-solid fa-record-vinyl text-retro-mustard"></i>`;
+            }
+        }
+
+        function toggleAudioControls() {
+            const drawer = document.getElementById('audioMixerDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function updateAudioGains() {
+            const crackle = document.getElementById('volCrackle').value;
+            const waves = document.getElementById('volWaves').value;
+            const chimes = document.getElementById('volChimes').value;
+            audioSynth.setLevels(crackle, waves, chimes);
+        }
+
+        /* ==========================================================
+           4. Inventory Checkboxes & Matching Logic
+           ========================================================== */
+        function initInventoryUI() {
+            const renderGroup = (items, containerId) => {
+                const el = document.getElementById(containerId);
+                el.innerHTML = items.map(item => `
+                    <label class="flex items-center space-x-2 cursor-pointer hover:text-retro-orange transition">
+                        <input type="checkbox" value="${item}" onchange="toggleInventoryItem('${item}')" 
+                               ${userInventory.has(item) ? 'checked' : ''} 
+                               class="rounded border-retro-dark text-retro-orange focus:ring-retro-orange">
+                        <span class="text-[11px]">${item}</span>
+                    </label>
+                `).join('');
+            };
+
+            renderGroup(INVENTORY_SPIRITS, 'spiritsCheckboxes');
+            renderGroup(INVENTORY_SYRUPS, 'syrupsCheckboxes');
+            renderGroup(INVENTORY_PRODUCE, 'produceCheckboxes');
+            updateInventoryStatus();
+        }
+
+        function toggleInventoryItem(name) {
+            if (userInventory.has(name)) {
+                userInventory.delete(name);
+            } else {
+                userInventory.add(name);
+            }
+            saveInventory();
+            renderCocktails();
+            updateInventoryStatus();
+        }
+
+        function selectAllInventory() {
+            INVENTORY_SPIRITS.concat(INVENTORY_SYRUPS, INVENTORY_PRODUCE).forEach(item => userInventory.add(item));
+            saveInventory();
+            initInventoryUI();
+            renderCocktails();
+        }
+
+        function clearInventory() {
+            userInventory.clear();
+            saveInventory();
+            initInventoryUI();
+            renderCocktails();
+        }
+
+        function saveInventory() {
+            localStorage.setItem('tiki_inventory', JSON.stringify(Array.from(userInventory)));
+            document.getElementById('cartCountBadge').innerText = userInventory.size;
+        }
+
+        function updateInventoryStatus() {
+            let readyCount = 0;
+            let oneAwayCount = 0;
+
+            COCKTAILS.forEach(c => {
+                const missing = c.ingredients.filter(ing => !userInventory.has(ing.name));
+                if (missing.length === 0) readyCount++;
+                else if (missing.length === 1) oneAwayCount++;
+            });
+
+            document.getElementById('cartStatusText').innerText = 
+                `Ready to Shake: ${readyCount} Drinks | 1 Ingredient Away: ${oneAwayCount} Drinks`;
+            document.getElementById('cartCountBadge').innerText = userInventory.size;
+        }
+
+        function toggleBarCartDrawer() {
+            const drawer = document.getElementById('barCartSection');
+            drawer.classList.toggle('hidden');
+            if (!drawer.classList.contains('hidden')) {
+                drawer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function filterByReadyToShake() {
+            readyOnlyFilter = !readyOnlyFilter;
+            renderCocktails();
+        }
+
+        /* ==========================================================
+           5. Bookmark / Saved Cocktails
+           ========================================================== */
+        function toggleBookmark(cocktailId, event) {
+            if (event) event.stopPropagation();
+            if (bookmarkedCocktails.has(cocktailId)) {
+                bookmarkedCocktails.delete(cocktailId);
+            } else {
+                bookmarkedCocktails.add(cocktailId);
+            }
+            localStorage.setItem('tiki_bookmarks', JSON.stringify(Array.from(bookmarkedCocktails)));
+            document.getElementById('savedCount').innerText = bookmarkedCocktails.size;
+            renderCocktails();
+        }
+
+        /* ==========================================================
+           6. Cocktail Card Rendering Engine
+           ========================================================== */
+        function setCategoryFilter(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-retro-orange', 'text-retro-cream');
+                    btn.classList.remove('bg-retro-cream', 'text-retro-dark');
+                } else {
+                    btn.classList.remove('bg-retro-orange', 'text-retro-cream');
+                    btn.classList.add('bg-retro-cream', 'text-retro-dark');
+                }
+            });
+            renderCocktails();
+        }
+
+        function renderCocktails() {
+            const grid = document.getElementById('cocktailGrid');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = COCKTAILS.filter(c => {
+                // Category Filter
+                if (currentCategory === 'bookmarked') {
+                    if (!bookmarkedCocktails.has(c.id)) return false;
+                } else if (currentCategory !== 'all' && c.category !== currentCategory) {
+                    return false;
+                }
+
+                // Ready Only Filter
+                if (readyOnlyFilter) {
+                    const missing = c.ingredients.filter(ing => !userInventory.has(ing.name));
+                    if (missing.length > 0) return false;
+                }
+
+                // Search Filter
+                if (search) {
+                    const matchName = c.name.toLowerCase().includes(search);
+                    const matchOrigin = c.origin.toLowerCase().includes(search);
+                    const matchIng = c.ingredients.some(i => i.name.toLowerCase().includes(search));
+                    if (!matchName && !matchOrigin && !matchIng) return false;
+                }
+
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-retro-card p-8 rounded-2xl border-4 border-retro-dark">
+                        <i class="fa-solid fa-martini-glass-empty text-5xl text-retro-orange mb-3"></i>
+                        <h3 class="font-groovy text-2xl text-retro-dark">No Tropical Libations Found</h3>
+                        <p class="font-mono-retro text-xs text-retro-dark/80 mt-1">Try adjusting your search terms, bar cart inventory, or category filter.</p>
+                        <button onclick="setCategoryFilter('all')" class="mt-4 font-mono-retro text-xs font-bold bg-retro-mustard text-retro-dark px-4 py-2 rounded-lg border-2 border-retro-dark">
+                            Reset All Filters
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(c => {
+                const isBookmarked = bookmarkedCocktails.has(c.id);
+                const missing = c.ingredients.filter(ing => !userInventory.has(ing.name));
+                const isReady = missing.length === 0 && userInventory.size > 0;
+
+                return `
+                    <div onclick="openRecipeModal('${c.id}')" class="bg-retro-card rounded-2xl border-4 border-retro-dark shadow-70s hover:-translate-y-1 hover:shadow-70s-lg transition-all duration-200 cursor-pointer flex flex-col justify-between overflow-hidden group">
+                        <!-- Card Photo Banner -->
+                        <div class="relative h-48 bg-retro-dark overflow-hidden border-b-2 border-retro-dark">
+                            <img src="${c.image}" alt="${c.name}" class="w-full h-full object-cover filter contrast-110 sepia-[0.25] group-hover:scale-105 transition duration-500">
+                            
+                            <!-- Category Badge -->
+                            <span class="absolute top-3 left-3 bg-retro-dark/85 text-retro-mustard font-mono-retro text-[10px] font-bold px-2 py-0.5 rounded border border-retro-mustard">
+                                ${c.category}
+                            </span>
+
+                            <!-- Bookmark Button -->
+                            <button onclick="toggleBookmark('${c.id}', event)" class="absolute top-3 right-3 bg-retro-card w-8 h-8 rounded-full border-2 border-retro-dark flex items-center justify-center text-xs shadow hover:bg-retro-orange hover:text-white transition" title="Save Cocktail">
+                                <i class="${isBookmarked ? 'fa-solid text-retro-orange' : 'fa-regular'} fa-bookmark"></i>
+                            </button>
+
+                            <!-- Inventory Match Tag -->
+                            ${isReady ? `
+                                <span class="absolute bottom-3 left-3 bg-retro-avocado text-retro-cream font-mono-retro text-[10px] font-bold px-2 py-0.5 rounded border border-retro-dark shadow">
+                                    <i class="fa-solid fa-check mr-1"></i> Ready to Shake
+                                </span>
+                            ` : missing.length === 1 && userInventory.size > 0 ? `
+                                <span class="absolute bottom-3 left-3 bg-retro-orange text-retro-cream font-mono-retro text-[10px] font-bold px-2 py-0.5 rounded border border-retro-dark shadow">
+                                    Need: ${missing[0].name.split('(')[0]}
+                                </span>
+                            ` : ''}
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="font-mono-retro text-[11px] text-retro-orange uppercase font-bold tracking-wider block mb-1">
+                                    ${c.era}
+                                </span>
+                                <h3 class="font-groovy text-2xl text-retro-dark mb-2 leading-tight">
+                                    ${c.name}
+                                </h3>
+                                <p class="font-typewriter text-xs text-retro-dark/80 line-clamp-2 mb-4 leading-relaxed">
+                                    ${c.notes}
+                                </p>
+                            </div>
+
+                            <!-- Ingredient Chips -->
+                            <div>
+                                <div class="flex flex-wrap gap-1 mb-4 font-mono-retro text-[10px]">
+                                    ${c.ingredients.slice(0, 4).map(i => `
+                                        <span class="bg-retro-cream px-2 py-0.5 rounded border border-retro-dark/40 text-retro-dark">
+                                            ${i.name.split('(')[0]}
+                                        </span>
+                                    `).join('')}
+                                    ${c.ingredients.length > 4 ? `<span class="text-retro-dark/60 font-bold px-1">+${c.ingredients.length - 4} more</span>` : ''}
+                                </div>
+
+                                <!-- Card Action Footer -->
+                                <div class="pt-3 border-t border-retro-dark/15 flex items-center justify-between text-xs font-mono-retro font-bold text-retro-orange">
+                                    <span>Inspect Formula</span>
+                                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        /* ==========================================================
+           7. Detailed Recipe Modal & Scaler
+           ========================================================== */
+        let activeCocktail = null;
+        let scaleMultiplier = 1;
+
+        function openRecipeModal(cocktailId) {
+            activeCocktail = COCKTAILS.find(c => c.id === cocktailId);
+            if (!activeCocktail) return;
+            scaleMultiplier = 1;
+            renderModalContent();
+            document.getElementById('recipeModal').classList.remove('hidden');
+        }
+
+        function closeRecipeModal() {
+            document.getElementById('recipeModal').classList.add('hidden');
+        }
+
+        function setMultiplier(mult) {
+            scaleMultiplier = mult;
+            renderModalContent();
+        }
+
+        function renderModalContent() {
+            const c = activeCocktail;
+            const container = document.getElementById('modalRecipeContent');
+
+            container.innerHTML = `
+                <div class="relative h-56 bg-retro-dark rounded-xl overflow-hidden border-2 border-retro-dark mb-5">
+                    <img src="${c.image}" alt="${c.name}" class="w-full h-full object-cover filter contrast-125 sepia-[0.2]">
+                    <div class="absolute bottom-3 left-3 bg-retro-dark/90 text-retro-mustard font-mono-retro text-xs px-2.5 py-1 rounded border border-retro-mustard">
+                        ${c.glassware} • ${c.ice}
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                    <div>
+                        <span class="text-retro-orange font-mono-retro text-xs font-bold uppercase tracking-widest block">${c.era} • ${c.origin}</span>
+                        <h2 class="font-groovy text-3xl text-retro-dark">${c.name}</h2>
+                    </div>
+                    <button onclick="toggleBookmark('${c.id}')" class="font-mono-retro text-xs px-3 py-1.5 rounded-lg border-2 border-retro-dark bg-retro-cream text-retro-dark hover:bg-retro-orange hover:text-white transition">
+                        <i class="${bookmarkedCocktails.has(c.id) ? 'fa-solid text-retro-orange' : 'fa-regular'} fa-bookmark mr-1"></i>
+                        ${bookmarkedCocktails.has(c.id) ? 'Saved' : 'Save'}
+                    </button>
+                </div>
+
+                <p class="font-typewriter text-xs sm:text-sm text-retro-dark/90 leading-relaxed mb-6 bg-retro-cream p-3 rounded-xl border border-retro-dark/20">
+                    "${c.notes}"
+                </p>
+
+                <!-- Portion Scaler Bar -->
+                <div class="flex items-center justify-between bg-retro-dark text-retro-cream p-3 rounded-xl border border-retro-mustard font-mono-retro text-xs mb-6">
+                    <span class="text-retro-mustard font-bold uppercase"><i class="fa-solid fa-calculator mr-1"></i> Scale Portions:</span>
+                    <div class="flex space-x-1.5">
+                        <button onclick="setMultiplier(1)" class="px-2.5 py-1 rounded border ${scaleMultiplier === 1 ? 'bg-retro-orange text-white border-retro-orange' : 'bg-retro-brown text-retro-cream border-retro-mustard/40'}">1x (Single)</button>
+                        <button onclick="setMultiplier(2)" class="px-2.5 py-1 rounded border ${scaleMultiplier === 2 ? 'bg-retro-orange text-white border-retro-orange' : 'bg-retro-brown text-retro-cream border-retro-mustard/40'}">2x (Couples)</button>
+                        <button onclick="setMultiplier(4)" class="px-2.5 py-1 rounded border ${scaleMultiplier === 4 ? 'bg-retro-orange text-white border-retro-orange' : 'bg-retro-brown text-retro-cream border-retro-mustard/40'}">4x (Punch Bowl)</button>
+                    </div>
+                </div>
+
+                <!-- Recipe Specs Table -->
+                <h3 class="font-groovy text-xl text-retro-dark mb-3">Formula & Measurements</h3>
+                <div class="bg-retro-cream rounded-xl border-2 border-retro-dark overflow-hidden mb-6 font-mono-retro text-xs">
+                    <table class="w-full text-left">
+                        <thead class="bg-retro-brown text-retro-cream text-[11px] uppercase tracking-wider">
+                            <tr>
+                                <th class="p-2.5">Ingredient</th>
+                                <th class="p-2.5 text-right">Measure</th>
+                                <th class="p-2.5 text-center">In Cart?</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-retro-dark/15">
+                            ${c.ingredients.map(ing => {
+                                const scaledAmount = (ing.amount * scaleMultiplier).toFixed(2).replace(/\.00$/, '');
+                                const hasIt = userInventory.has(ing.name);
+                                return `
+                                    <tr class="hover:bg-retro-mustard/15">
+                                        <td class="p-2.5 font-bold text-retro-dark">${ing.name}</td>
+                                        <td class="p-2.5 text-right font-bold text-retro-orange">${scaledAmount} ${ing.unit}</td>
+                                        <td class="p-2.5 text-center">
+                                            ${hasIt ? '<i class="fa-solid fa-circle-check text-retro-avocado"></i>' : '<i class="fa-regular fa-circle text-retro-dark/30"></i>'}
+                                        </td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Garnish & Ice Instructions -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono-retro text-xs mb-6">
+                    <div class="bg-retro-cream p-3 rounded-xl border border-retro-dark">
+                        <span class="font-bold text-retro-orange block mb-1 uppercase"><i class="fa-solid fa-icicles mr-1"></i> Ice & Vessels</span>
+                        <p class="text-retro-dark/90">${c.ice} in ${c.glassware}</p>
+                    </div>
+                    <div class="bg-retro-cream p-3 rounded-xl border border-retro-dark">
+                        <span class="font-bold text-retro-avocado block mb-1 uppercase"><i class="fa-solid fa-seedling mr-1"></i> Authentic Garnish</span>
+                        <p class="text-retro-dark/90">${c.garnish}</p>
+                    </div>
+                </div>
+
+                <!-- Footer Close -->
+                <div class="flex justify-end gap-3 pt-2">
+                    <button onclick="closeRecipeModal()" class="retro-btn bg-retro-dark text-retro-cream font-mono-retro text-xs px-5 py-2.5 rounded-xl border border-retro-mustard hover:bg-retro-orange transition font-bold">
+                        Return to Lounge
+                    </button>
+                </div>
+            `;
+        }
+
+        /* ==========================================================
+           8. Standalone Rum Blend Calculator Modal
+           ========================================================== */
+        function openCustomBlendModal() {
+            calcBlend();
+            document.getElementById('rumBlendModal').classList.remove('hidden');
+        }
+        function closeCustomBlendModal() {
+            document.getElementById('rumBlendModal').classList.add('hidden');
+        }
+
+        function calcBlend() {
+            const total = parseFloat(document.getElementById('blendTotalOz').value);
+            const sliderVal = parseInt(document.getElementById('blendSlider').value);
+            const pctA = sliderVal / 100;
+            const pctB = (100 - sliderVal) / 100;
+
+            const amountA = (total * pctA).toFixed(2);
+            const amountB = (total * pctB).toFixed(2);
+
+            document.getElementById('rumAPct').innerText = `${sliderVal}%`;
+            document.getElementById('rumAAmount').innerText = `${amountA} oz`;
+            document.getElementById('rumBAmount').innerText = `${amountB} oz`;
+
+            const desc = document.getElementById('blendDescriptor');
+            if (sliderVal >= 80) {
+                desc.innerText = "Overwhelming Funk Bomb (Pot-Still Dominated)";
+                desc.className = "font-bold text-retro-orange";
+            } else if (sliderVal >= 55) {
+                desc.innerText = "Punchy & Expressive (Trader Vic 1944 Spec)";
+                desc.className = "font-bold text-retro-mustard";
+            } else if (sliderVal >= 45) {
+                desc.innerText = "The Aristocrat (50/50 Perfect Balance)";
+                desc.className = "font-bold text-retro-avocado";
+            } else if (sliderVal >= 20) {
+                desc.innerText = "Crisp, Herbal & Grassy (Agricole Lean)";
+                desc.className = "font-bold text-retro-dark";
+            } else {
+                desc.innerText = "Dry & Ultra-Terroir (Pure Cane Juice)";
+                desc.className = "font-bold text-retro-orange";
+            }
+        }
+
+        function randomCocktail() {
+            const rand = COCKTAILS[Math.floor(Math.random() * COCKTAILS.length)];
+            openRecipeModal(rand.id);
+        }
+
+        /* ==========================================================
+           9. UI Themes & Film Grain Toggles
+           ========================================================== */
+        let currentTheme = 'lanai';
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+
+            if (currentTheme === 'lanai') {
+                body.classList.add('theme-midnight');
+                currentTheme = 'midnight';
+                icon.className = 'fa-solid fa-moon text-retro-orange';
+                label.innerText = 'Midnight';
+            } else {
+                body.classList.remove('theme-midnight');
+                currentTheme = 'lanai';
+                icon.className = 'fa-solid fa-sun text-retro-mustard';
+                label.innerText = 'Lanai';
+            }
+        }
+
+        let grainOn = true;
+        function toggleGrain() {
+            const grainEl = document.getElementById('filmGrain');
+            grainOn = !grainOn;
+            grainEl.style.opacity = grainOn ? '0.16' : '0';
+        }
+
+        /* ==========================================================
+           10. Initialization
+           ========================================================== */
+        window.addEventListener('DOMContentLoaded', () => {
+            initInventoryUI();
+            renderCocktails();
+            document.getElementById('savedCount').innerText = bookmarkedCocktails.size;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1761 @@
+:root {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #131b2e;
+  --bg-card: rgba(22, 33, 58, 0.75);
+  --bg-card-hover: rgba(30, 45, 78, 0.95);
+  --bg-elevated: #1a253e;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(99, 102, 241, 0.35);
+  
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --accent-primary: #6366f1;
+  --accent-primary-hover: #4f46e5;
+  --accent-secondary: #06b6d4;
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-danger: #ef4444;
+  
+  /* Guitar specific warm bronze / wood tones */
+  --guitar-gold: #fbbf24;
+  --guitar-amber: #d97706;
+  --guitar-wood: #3e2723;
+  --guitar-wood-light: #4e342e;
+  
+  /* Harmonic role colors */
+  --tonic-color: #818cf8;
+  --tonic-bg: rgba(99, 102, 241, 0.15);
+  --subdom-color: #34d399;
+  --subdom-bg: rgba(16, 185, 129, 0.15);
+  --dom-color: #fbbf24;
+  --dom-bg: rgba(245, 158, 11, 0.15);
+  --dim-color: #f43f5e;
+  --dim-bg: rgba(239, 68, 68, 0.15);
+  --borrowed-color: #c084fc;
+  --borrowed-bg: rgba(168, 85, 247, 0.15);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 30px rgba(0,0,0,0.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(217, 119, 6, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 60%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header & Controls */
+header {
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(11, 15, 25, 0.88);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0.85rem 1.5rem;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #d97706, #b45309);
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.45);
+}
+
+.brand-text h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(to right, #fff, #fde68a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-text p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Control Panels */
+.key-selector-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.control-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.pill-select-wrapper {
+  position: relative;
+}
+
+select.app-select {
+  background: var(--bg-elevated);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 2rem 0.45rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+select.app-select:hover, select.app-select:focus {
+  border-color: var(--guitar-gold);
+  outline: none;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+/* Capo Selector Pill */
+.capo-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.capo-chip {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fde68a;
+  border-radius: var(--radius-md);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Accidental Style Toggle */
+.segmented-control {
+  display: flex;
+  background: var(--bg-primary);
+  padding: 2px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.segment-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.segment-btn.active {
+  background: var(--guitar-amber);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.4);
+}
+
+/* Quick Notes Bar (C, D, E, F...) */
+.quick-key-bar {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.35rem;
+  padding: 0.4rem 0;
+  scrollbar-width: thin;
+}
+
+.key-pill-btn {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.key-pill-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+  border-color: var(--guitar-gold);
+}
+
+.key-pill-btn.active {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  color: #fff;
+  border-color: #f59e0b;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.5);
+}
+
+/* Volume / Master Audio Controls */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-icon {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  color: var(--text-main);
+  background: var(--bg-elevated);
+  border-color: var(--guitar-gold);
+}
+
+/* Main Layout */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Key Banner & Summary */
+.key-hero {
+  background: linear-gradient(135deg, rgba(30, 20, 16, 0.95), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.key-hero::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.key-hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-left h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+}
+
+.hero-left .key-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat-item {
+  background: rgba(11, 15, 25, 0.65);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 0.15rem;
+}
+
+.stat-value.notes-list {
+  color: var(--guitar-gold);
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+}
+
+/* Capo Tip Banner */
+.capo-tip-banner {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.05));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.capo-tip-text strong {
+  color: #fde68a;
+}
+
+/* Sections */
+.section-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title span.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* GUITAR CHORD CARDS & DIAGRAMS */
+.chord-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 1.15rem;
+}
+
+.chord-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.chord-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-card-hover);
+  border-color: var(--guitar-gold);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.chord-card.tonic {
+  border-top: 3px solid var(--tonic-color);
+}
+.chord-card.subdominant {
+  border-top: 3px solid var(--subdom-color);
+}
+.chord-card.dominant {
+  border-top: 3px solid var(--dom-color);
+}
+.chord-card.diminished {
+  border-top: 3px solid var(--dim-color);
+}
+
+.chord-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.3rem;
+}
+
+.roman-badge {
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.chord-card.tonic .roman-badge {
+  background: var(--tonic-bg);
+  color: var(--tonic-color);
+}
+.chord-card.subdominant .roman-badge {
+  background: var(--subdom-bg);
+  color: var(--subdom-color);
+}
+.chord-card.dominant .roman-badge {
+  background: var(--dom-bg);
+  color: var(--dom-color);
+}
+.chord-card.diminished .roman-badge {
+  background: var(--dim-bg);
+  color: var(--dim-color);
+}
+
+.role-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.chord-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.chord-name {
+  font-size: 1.8rem;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  margin: 0.1rem 0;
+  color: var(--text-main);
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.chord-name .chord-seventh {
+  font-size: 1.15rem;
+  color: var(--guitar-gold);
+}
+
+.capo-grip-hint {
+  font-size: 0.75rem;
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.2);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+/* SVG Guitar Chord Box Diagram */
+.chord-box-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(11, 15, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.4rem;
+  margin: 0.5rem 0 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chord-box-wrap:hover {
+  background: rgba(26, 37, 62, 0.85);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.chord-svg {
+  width: 100%;
+  max-width: 130px;
+  height: 110px;
+  display: block;
+}
+
+/* Tablature snippet */
+.chord-tab-snippet {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+.chord-tones {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.chord-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.btn-play-chord {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.btn-play-chord:hover {
+  background: var(--guitar-amber);
+  color: #fff;
+  border-color: var(--guitar-gold);
+  box-shadow: 0 2px 10px rgba(217, 119, 6, 0.45);
+}
+
+.btn-add-progression {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.btn-add-progression:hover {
+  background: var(--accent-success);
+  color: #fff;
+  border-color: var(--accent-success);
+}
+
+.btn-variations-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--border-color);
+  transition: color 0.15s;
+}
+
+.btn-variations-toggle:hover {
+  color: var(--text-main);
+}
+
+.variations-panel {
+  display: none;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.2s ease-in;
+}
+
+.variations-panel.open {
+  display: block;
+}
+
+.variation-tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.chord-variation-chip {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  padding: 0.22rem 0.55rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.chord-variation-chip:hover {
+  background: var(--bg-elevated);
+  border-color: var(--guitar-gold);
+  color: #fff;
+}
+
+.typical-moves {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: rgba(0,0,0,0.25);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.4rem;
+}
+
+.typical-moves strong {
+  color: var(--text-muted);
+}
+
+/* GUITAR FRETBOARD WORKSTATION */
+.instrument-viewer {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.fretboard-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  background: var(--bg-secondary);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.fretboard-wrapper {
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+}
+
+/* Realistic 15-Fret Rosewood Guitar Neck */
+.fretboard {
+  position: relative;
+  background: linear-gradient(180deg, #2b1b17 0%, #3e2723 50%, #2b1b17 100%);
+  border: 3px solid #5d4037;
+  border-radius: 8px;
+  min-width: 1050px;
+  padding: 14px 0 10px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.9), 0 10px 30px rgba(0,0,0,0.6);
+  user-select: none;
+}
+
+.fret-strings {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.guitar-string {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 26px;
+}
+
+/* Realistic metal strings with shadow */
+.guitar-string::after {
+  content: "";
+  position: absolute;
+  left: 42px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, #f1f5f9 0%, #94a3b8 50%, #475569 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.85);
+  pointer-events: none;
+}
+
+.guitar-string[data-string="0"]::after { height: 1.2px; } /* High E */
+.guitar-string[data-string="1"]::after { height: 1.8px; } /* B */
+.guitar-string[data-string="2"]::after { height: 2.4px; } /* G */
+.guitar-string[data-string="3"]::after { height: 3.2px; } /* D wound */
+.guitar-string[data-string="4"]::after { height: 4.0px; } /* A wound */
+.guitar-string[data-string="5"]::after { height: 4.8px; } /* Low E wound */
+
+.string-open-note {
+  width: 42px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: #fde68a;
+  background: #1b120f;
+  border-right: 5px solid #d4af37; /* Brass bone nut */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.string-open-note:hover {
+  background: #3e2723;
+  color: #fff;
+}
+
+.fret-cells {
+  display: flex;
+  flex: 1;
+}
+
+.fret-cell {
+  flex: 1;
+  border-right: 3px solid #d6d3d1; /* Nickel-silver fret wire */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  position: relative;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.fret-cell:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Inlay pearl dots */
+.fret-marker-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #f8fafc 0%, #cbd5e1 70%, #94a3b8 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.fret-number-row {
+  display: flex;
+  margin-left: 42px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 6px;
+}
+
+.fret-num {
+  flex: 1;
+  text-align: center;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.fret-num.major-marker {
+  color: var(--guitar-gold);
+}
+
+/* Note Pill on Fret */
+.fret-note-pill {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.68rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.fret-note-pill:hover {
+  transform: scale(1.25);
+  z-index: 10;
+}
+
+.fret-note-pill.in-scale {
+  background: #065f46;
+  border-color: #34d399;
+  color: #ecfdf5;
+}
+
+.fret-note-pill.root-note {
+  background: #b45309;
+  border-color: #fde68a;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.9);
+}
+
+.fret-note-pill.chord-note {
+  background: #dc2626 !important;
+  border-color: #fca5a5 !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.95);
+  transform: scale(1.15);
+}
+
+.fret-note-pill.dimmed {
+  opacity: 0.25;
+}
+
+/* SCALES & PENTATONIC BOXES SECTION */
+.scales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.25rem;
+}
+
+.scale-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.scale-card:hover {
+  border-color: var(--guitar-gold);
+  background: var(--bg-card-hover);
+}
+
+.scale-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.scale-title-group h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.scale-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.scale-card.primary .scale-badge {
+  color: var(--tonic-color);
+  border-color: rgba(99, 102, 241, 0.4);
+  background: var(--tonic-bg);
+}
+
+.scale-card.pentatonic .scale-badge {
+  color: var(--guitar-gold);
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.15);
+}
+
+.scale-card.blues .scale-badge {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.scale-card.modal .scale-badge {
+  color: var(--borrowed-color);
+  border-color: rgba(192, 132, 252, 0.4);
+  background: var(--borrowed-bg);
+}
+
+.scale-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+.scale-notes-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.note-bubble {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.note-bubble:hover {
+  background: var(--guitar-amber);
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.note-bubble.root-note {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  color: #fff;
+  border-color: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.note-bubble.blue-note {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #fff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.scale-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.scale-formula {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.btn-play-scale {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.btn-play-scale:hover {
+  background: var(--guitar-amber);
+  color: #fff;
+}
+
+/* PROGRESSION BUILDER & STRUMMER */
+.progression-section {
+  background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.progression-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.playback-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-play-progression {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.35rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s;
+}
+
+.btn-play-progression:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+}
+
+.btn-play-progression.playing {
+  background: linear-gradient(135deg, var(--accent-danger), #dc2626);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+
+.bpm-control {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-elevated);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.bpm-slider {
+  width: 90px;
+  accent-color: var(--guitar-gold);
+  cursor: pointer;
+}
+
+/* Timeline / Chords strip */
+.progression-strip {
+  min-height: 180px;
+  background: rgba(11, 15, 25, 0.75);
+  border: 2px dashed rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.progression-strip.drag-over {
+  border-color: var(--guitar-gold);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.progression-placeholder {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.prog-chord-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.75rem 0.65rem;
+  min-width: 106px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.prog-chord-item.active-step {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.4), rgba(99, 102, 241, 0.3));
+  border-color: var(--guitar-gold);
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.7);
+}
+
+.prog-chord-item .prog-roman {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--guitar-gold);
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.prog-chord-item .prog-name {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.prog-chord-item .prog-mini-diagram {
+  width: 74px;
+  height: 80px;
+  margin: 0.15rem 0 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prog-chord-item .prog-mini-diagram .chord-svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  display: block;
+}
+
+.prog-chord-item .prog-notes {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: rgba(11, 15, 25, 0.6);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.btn-remove-prog-chord {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-dim);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-remove-prog-chord:hover {
+  background: var(--accent-danger);
+  color: #fff;
+  border-color: var(--accent-danger);
+}
+
+.progression-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn-prog-action {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.btn-prog-action:hover {
+  color: var(--text-main);
+  background: var(--bg-card-hover);
+  border-color: var(--guitar-gold);
+}
+
+/* FLAVOR & BORROWED CHORDS (Spice Box) */
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.15rem;
+}
+
+.flavor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+
+.flavor-card:hover {
+  border-color: var(--borrowed-color);
+  background: var(--bg-card-hover);
+}
+
+.flavor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.flavor-type-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--borrowed-color);
+  letter-spacing: 0.05em;
+}
+
+.flavor-content {
+  margin-bottom: 0.75rem;
+}
+
+.flavor-name {
+  font-size: 1.5rem;
+  font-weight: 850;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flavor-vibe {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* Songwriting Tips Footer Section */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.tip-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.tip-card h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tip-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.tip-card ul {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tip-card li {
+  margin-bottom: 0.35rem;
+}
+
+/* Toast message */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--guitar-amber);
+  color: #fff;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SONG ARRANGER, SECTIONS & LYRICS SHEET STYLES
+   ============================================================ */
+
+.song-arranger-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.song-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 260px;
+}
+
+.song-title-input {
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 850;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-md);
+  outline: none;
+  width: 100%;
+  max-width: 320px;
+  transition: all 0.2s;
+}
+
+.song-title-input:focus {
+  border-color: var(--guitar-gold);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+}
+
+.song-view-switcher {
+  display: flex;
+  background: var(--bg-primary);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.view-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.view-tab-btn.active {
+  background: var(--guitar-amber);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+}
+
+/* Section Tabs Ribbon */
+.section-tabs-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.3rem 0 0.85rem;
+  scrollbar-width: thin;
+}
+
+.section-tab-pill {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 750;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.section-tab-pill:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+  border-color: var(--guitar-gold);
+}
+
+.section-tab-pill.active {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.3), rgba(30, 45, 78, 0.9));
+  border-color: var(--guitar-gold);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+}
+
+.section-tab-pill.playing-now {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(5, 150, 105, 0.7));
+  border-color: #34d399;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.65);
+  animation: pulseGreen 1s infinite alternate;
+}
+
+@keyframes pulseGreen {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+.section-count-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  color: var(--guitar-gold);
+}
+
+.add-section-btn {
+  background: transparent;
+  border: 2px dashed rgba(245, 158, 11, 0.35);
+  color: var(--guitar-gold);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.add-section-btn:hover {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: var(--guitar-gold);
+}
+
+/* Active Section Controls Ribbon */
+.active-section-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: rgba(11, 15, 25, 0.6);
+  padding: 0.65rem 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.85rem;
+}
+
+.active-section-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-name-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--guitar-gold);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 0.15rem 0.35rem;
+  outline: none;
+  width: 140px;
+}
+
+.section-tools-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-section-tool {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s;
+}
+
+.btn-section-tool:hover {
+  background: var(--bg-card-hover);
+  color: #fff;
+  border-color: var(--guitar-gold);
+}
+
+/* Target Section Selector badge in Chords section */
+.target-section-badge-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fde68a;
+}
+
+/* FULL SONG SHEET / LYRICS VIEW */
+.song-sheet-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sheet-section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s;
+}
+
+.sheet-section-card:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.sheet-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sheet-section-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--guitar-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sheet-chord-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(11, 15, 25, 0.6);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.sheet-chord-tag {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.sheet-chord-tag:hover {
+  background: var(--guitar-amber);
+}
+
+.sheet-chord-tag .sheet-roman {
+  font-size: 0.7rem;
+  color: var(--guitar-gold);
+}
+
+.sheet-chord-tag .sheet-tab {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.sheet-lyrics-textarea {
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.75rem 1rem;
+  min-height: 80px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sheet-lyrics-textarea:focus {
+  border-color: var(--guitar-gold);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    padding: 0.75rem 1rem;
+  }
+  main {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  .key-hero h2 {
+    font-size: 1.8rem;
+  }
+  .chord-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .progression-controls-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .chord-grid {
+    grid-template-columns: 1fr;
+  }
+}

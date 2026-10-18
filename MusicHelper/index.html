@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Songwriter Helper — Chords, Fretboard, Capo & Tabs</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎸</text></svg>">
+</head>
+<body>
+
+  <!-- Sticky Header & Controls -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">🎸</div>
+        <div class="brand-text">
+          <h1>Guitar Songwriter Helper</h1>
+          <p>Chords • Fretboard • Capo • Tabs & Strumming</p>
+        </div>
+      </div>
+
+      <!-- Key, Capo & Tuning Selector Panel -->
+      <div class="key-selector-panel">
+        <div class="control-group">
+          <label for="rootSelect" class="control-label">Key</label>
+          <div class="pill-select-wrapper">
+            <select id="rootSelect" class="app-select">
+              <option value="0">C</option>
+              <option value="1">C♯ / D♭</option>
+              <option value="2">D</option>
+              <option value="3">D♯ / E♭</option>
+              <option value="4">E</option>
+              <option value="5">F</option>
+              <option value="6">F♯ / G♭</option>
+              <option value="7">G</option>
+              <option value="8">G♯ / A♭</option>
+              <option value="9">A</option>
+              <option value="10">A♯ / B♭</option>
+              <option value="11">B</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="scaleSelect" class="control-label">Mode</label>
+          <div class="pill-select-wrapper">
+            <select id="scaleSelect" class="app-select">
+              <option value="major">Major (Ionian)</option>
+              <option value="minor">Natural Minor (Aeolian)</option>
+              <option value="dorian">Dorian Mode (Santana/Funk)</option>
+              <option value="mixolydian">Mixolydian (Classic Rock)</option>
+              <option value="harmonic_minor">Harmonic Minor (Spanish)</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+        </div>
+
+        <!-- Capo Selector -->
+        <div class="control-group">
+          <label for="capoSelect" class="control-label" style="color:#fde68a;">Capo</label>
+          <div class="pill-select-wrapper">
+            <select id="capoSelect" class="app-select" style="border-color: rgba(245, 158, 11, 0.4); color: #fde68a;">
+              <option value="0">No Capo</option>
+              <option value="1">Capo 1</option>
+              <option value="2">Capo 2</option>
+              <option value="3">Capo 3</option>
+              <option value="4">Capo 4</option>
+              <option value="5">Capo 5</option>
+              <option value="6">Capo 6</option>
+              <option value="7">Capo 7</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+        </div>
+
+        <!-- Guitar Tuning Selector -->
+        <div class="control-group">
+          <label for="tuningSelect" class="control-label">Tuning</label>
+          <div class="pill-select-wrapper">
+            <select id="tuningSelect" class="app-select">
+              <option value="standard">Standard (E A D G B E)</option>
+              <option value="drop_d">Drop D (D A D G B E)</option>
+              <option value="dadgad">DADGAD (Celtic / Folk)</option>
+              <option value="open_d">Open D (D A D F# A D)</option>
+              <option value="open_g">Open G (D G D G B D)</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="segmented-control" role="group">
+            <button class="segment-btn active" data-acc="auto">Auto</button>
+            <button class="segment-btn" data-acc="sharps">♯</button>
+            <button class="segment-btn" data-acc="flats">♭</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio Mute -->
+      <div class="header-actions">
+        <button id="btnMute" class="btn-icon" title="Toggle Guitar Audio">🔊</button>
+      </div>
+    </div>
+
+    <!-- Quick Key Ribbon -->
+    <div class="header-container" style="margin-top: 0.4rem;">
+      <div id="quickKeyBtns" class="quick-key-bar"></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Key Overview Hero Banner -->
+    <section class="key-hero">
+      <div class="key-hero-content">
+        <div class="hero-left">
+          <h2 id="heroKeyTitle"><span>🎸</span> C Major</h2>
+          <p id="heroSubtitle" class="key-subtitle">Bright, uplifting, and foundational for pop, folk, country, and rock.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-label">Scale Notes</div>
+            <div id="heroNotes" class="stat-value notes-list">C • D • E • F • G • A • B</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Relative Key</div>
+            <div id="heroRelKey" class="stat-value">A Minor (vi)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Tonic Mood</div>
+            <div id="heroMood" class="stat-value">Home Base</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart Capo Banner -->
+      <div id="capoTipBanner" class="capo-tip-banner">
+        <div id="capoTipText" class="capo-tip-text">
+          💡 <strong>Acoustic Capo Trick:</strong> Put a capo on <strong>Fret 3</strong> to play this key using easy <strong>"C" open chord shapes</strong>!
+        </div>
+      </div>
+    </section>
+
+    <!-- Complete Guitar Song Arranger & Progression Studio -->
+    <section class="progression-section" id="songStudioSection">
+      <!-- Song Header & View Switcher -->
+      <div class="song-arranger-header">
+        <div class="song-title-group">
+          <span style="font-size: 1.4rem;">🎵</span>
+          <input type="text" id="songTitleInput" class="song-title-input" value="My Acoustic Song" placeholder="Song Title..." title="Click to rename song">
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem;">
+          <!-- Song Structure Presets -->
+          <div class="pill-select-wrapper">
+            <select id="songStructureSelect" class="app-select" style="font-size: 0.85rem; border-color: rgba(245, 158, 11, 0.4);">
+              <option value="">✨ Load Song Form Preset...</option>
+              <option value="pop_rock_full">🌟 Pop / Rock Hit (Intro • Verse 1 • Pre-Ch • Chorus • Verse 2 • Chorus • Bridge • Chorus • Outro)</option>
+              <option value="singer_songwriter_full">☕ Acoustic Ballad (Intro • Verse 1 • Chorus • Verse 2 • Chorus • Bridge • Outro)</option>
+              <option value="folk_storyteller">🌾 Folk Storyteller (Verse 1 • Verse 2 • Chorus • Verse 3 • Chorus • Outro)</option>
+              <option value="quick_jam">⚡ Quick Jam (Verse • Chorus)</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+
+          <!-- View Switcher -->
+          <div class="song-view-switcher">
+            <button id="btnViewArranger" class="view-tab-btn active"><span>🎛</span> Arranger</button>
+            <button id="btnViewSheet" class="view-tab-btn"><span>📝</span> Lyrics & Sheet</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Tabs Ribbon -->
+      <div style="margin-bottom: 0.85rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
+          <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim);">Song Structure Sections</span>
+          <span id="activeSectionHint" style="font-size:0.78rem; color:var(--guitar-gold); font-weight:800;">Editing: Verse 1</span>
+        </div>
+        <div id="sectionTabsStrip" class="section-tabs-strip"></div>
+      </div>
+
+      <!-- Visual Arranger View -->
+      <div id="visualArrangerView">
+        <div class="active-section-ribbon">
+          <div class="active-section-name-wrap">
+            <span style="font-size: 0.8rem; color: var(--text-dim); font-weight:800; text-transform:uppercase;">Section:</span>
+            <input type="text" id="sectionNameInput" class="section-name-input" value="Verse 1" title="Rename this section">
+            <div class="section-tools-group">
+              <button id="btnDupSection" class="btn-section-tool" title="Duplicate this section">📋 Duplicate</button>
+              <button id="btnMoveLeft" class="btn-section-tool" title="Move section left">◀</button>
+              <button id="btnMoveRight" class="btn-section-tool" title="Move section right">▶</button>
+              <button id="btnDeleteSection" class="btn-section-tool" style="color:var(--accent-danger);" title="Delete this section">🗑</button>
+            </div>
+          </div>
+
+          <div class="playback-controls">
+            <div class="bpm-control">
+              <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Tempo</span>
+              <input type="range" id="bpmSlider" class="bpm-slider" min="60" max="180" value="95">
+              <span id="bpmValue" style="min-width: 58px;">95 BPM</span>
+            </div>
+
+            <button id="btnPlayProgression" class="btn-play-progression" title="Loop current section">
+              <span>🎸</span> Loop Section
+            </button>
+
+            <button id="btnPlayFullSong" class="btn-play-progression" style="background:linear-gradient(135deg, #6366f1, #4f46e5); box-shadow:0 4px 14px rgba(99,102,241,0.4);" title="Play through all sections sequentially from start to finish">
+              <span>▶▶</span> Play Full Song
+            </button>
+          </div>
+        </div>
+
+        <!-- Progression Timeline Strip -->
+        <div id="progressionStrip" class="progression-strip"></div>
+
+        <div class="progression-footer-actions">
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <span style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700;">Transpose Section:</span>
+            <button id="btnTransposeDown" class="btn-prog-action" title="Transpose section -1 semitone">♭ –1</button>
+            <button id="btnTransposeUp" class="btn-prog-action" title="Transpose section +1 semitone">♯ +1</button>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button id="btnCopyProg" class="btn-prog-action" title="Copy section tabs to clipboard">📋 Copy Section Tabs</button>
+            <button id="btnClearProg" class="btn-prog-action" style="color:var(--accent-danger);" title="Clear chords from this section">Clear Section</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Song Sheet / Lyrics View -->
+      <div id="songSheetView" style="display: none;">
+        <div id="songSheetContainer" class="song-sheet-container"></div>
+        <div class="progression-footer-actions" style="margin-top: 1.25rem;">
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <button id="btnCopySongSheet" class="btn-prog-action" style="color:#fff; background:var(--guitar-amber);">📋 Copy Full Song Sheet</button>
+            <button id="btnExportSongJson" class="btn-prog-action">💾 Export Song (JSON)</button>
+            <label class="btn-prog-action" style="cursor: pointer; margin: 0;">
+              📂 Load Song (JSON)
+              <input type="file" id="importSongFileInput" accept=".json" style="display:none;">
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diatonic Guitar Chords Section -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🎼</span> Guitar Chords in This Key
+          <span class="badge">Diatonic Shapes & Fingerings</span>
+        </h2>
+        <div class="section-actions">
+          <!-- Target Section Selector -->
+          <div class="target-section-badge-bar">
+            <span>➕ Adding to:</span>
+            <select id="targetSectionSelect" class="app-select" style="padding: 0.25rem 1.6rem 0.25rem 0.6rem; font-size: 0.8rem; background:rgba(11,15,25,0.85); color:#fff; border-color:var(--guitar-gold);"></select>
+          </div>
+          <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+            <input type="checkbox" id="toggleSevenths" style="accent-color: var(--guitar-gold); cursor: pointer;">
+            Show 7th Chords
+          </label>
+        </div>
+      </div>
+
+      <!-- Guitar Chords Grid -->
+      <div id="chordGrid" class="chord-grid"></div>
+    </section>
+
+    <!-- Interactive 15-Fret Guitar Fretboard Workstation -->
+    <section class="instrument-viewer">
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🎸</span> Interactive Guitar Fretboard
+          <span class="badge">15 Frets • Full Neck</span>
+        </h2>
+      </div>
+
+      <!-- Fretboard Controls Bar -->
+      <div class="fretboard-controls-bar">
+        <div class="control-group">
+          <label for="fretDisplayModeSelect" class="control-label">Show On Frets</label>
+          <div class="pill-select-wrapper">
+            <select id="fretDisplayModeSelect" class="app-select" style="font-size: 0.85rem;">
+              <option value="notes">Note Names (C, D, E, F...)</option>
+              <option value="degrees">Scale Degrees (R, 2, 3, 4, 5, 6, 7)</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="pentatonicBoxSelect" class="control-label" style="color:var(--guitar-gold);">Pentatonic Box</label>
+          <div class="pill-select-wrapper">
+            <select id="pentatonicBoxSelect" class="app-select" style="font-size: 0.85rem; border-color: rgba(245, 158, 11, 0.4);">
+              <option value="all">Entire Fretboard (All Frets)</option>
+              <option value="1">Box 1 (The Classic Blues/Rock Box)</option>
+              <option value="2">Box 2</option>
+              <option value="3">Box 3</option>
+              <option value="4">Box 4</option>
+              <option value="5">Box 5</option>
+            </select>
+            <span class="select-arrow">▼</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fretboard Display -->
+      <div class="fretboard-wrapper">
+        <div id="guitarFretboard"></div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.78rem; color: var(--text-dim); margin-top: 0.75rem;">
+        Highlighted notes show scale notes (<span style="color:#34d399; font-weight:700;">Green</span>) and root tonics (<span style="color:#f59e0b; font-weight:700;">Gold</span>). Fret markers at 3, 5, 7, 9, 12, 15. Click any fret or open nut note to pluck it! Hover or strum any chord card to light up its exact fingerings (<span style="color:#ef4444; font-weight:700;">Red</span>).
+      </p>
+    </section>
+
+    <!-- Scales You Can Use on Guitar (Melody & Soloing) -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🔥</span> Guitar Scales for Melodies, Hooks & Riffs
+          <span class="badge">Soloing Cheat Sheet</span>
+        </h2>
+      </div>
+      <div id="scalesGrid" class="scales-grid"></div>
+    </section>
+
+    <!-- The Spice Box (Borrowed & Secondary Chords) -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>✨</span> The Guitar Spice Box
+          <span class="badge">Modal Interchange & Secondary Dominants</span>
+        </h2>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Take your acoustic or electric guitar songwriting beyond basic chords. These borrowed chords and secondary dominants add emotion, goosebumps, and classic rock character.
+      </p>
+      <div id="flavorGrid" class="flavor-grid"></div>
+    </section>
+
+    <!-- Guitar Songwriting & Playing Pro Tips -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>💡</span> Guitar Songwriting Principles & Pro Tips
+        </h2>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4><span>🎸</span> The Secret of the Capo</h4>
+          <p>
+            You don't need to struggle with barre chords to write in difficult singer keys like E♭, A♭, or F:
+          </p>
+          <ul>
+            <li><strong>Capo 1 with G shapes:</strong> Sounds in A♭ Major.</li>
+            <li><strong>Capo 3 with C shapes:</strong> Sounds in E♭ Major. Rich open ringing strings!</li>
+            <li><strong>Capo 5 with C shapes:</strong> Sounds in F Major with a chimey, mandolin-like acoustic ring.</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h4><span>🎶</span> The CAGED System</h4>
+          <p>
+            Every chord on the neck belongs to one of 5 fundamental open chord shapes: <strong>C, A, G, E, D</strong>.
+          </p>
+          <ul>
+            <li><strong>E-Shape Barre:</strong> Root on String 6 (Low E). The most powerful rock & punk chord.</li>
+            <li><strong>A-Shape Barre:</strong> Root on String 5 (A). Punchy, midrange focus.</li>
+            <li><strong>C & G Shapes:</strong> Beautiful suspended and folk acoustic voicings.</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h4><span>🥁</span> Dynamic Strumming Patterns</h4>
+          <p>
+            Rhythm brings chords to life:
+          </p>
+          <ul>
+            <li><strong>The "Island / Pop" Strum:</strong> <code>D - D U - U D -</code> (Down, Down-Up, Up-Down). The universal acoustic song rhythm.</li>
+            <li><strong>Bass-Strum (Boom-Chicka):</strong> Pluck root bass note on beat 1, then brush treble strings on beats 2 & 4. Classic Johnny Cash / folk country drive.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
